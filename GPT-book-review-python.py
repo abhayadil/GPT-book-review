@@ -16,10 +16,12 @@ def get_completion(prompt, model = "gpt-3.5-turbo"):
     )
     return response.choices[0].message["content"]
 
+#If you want to give a diiferent name to the file that is being read, change it here
 inputer = open("inserthere.txt", encoding="utf8", mode="r")
 
 text = inputer.read()
 
+#This is the prompt that is being feed to the GPT model
 prompt = f"""I want you to act as a book critic and expert in the subject of literature, \
 You are working with one of the top book reviewing magazine. \
 Criticize and review the content of the book, the content of the book is delimited by triple backticks. \
@@ -32,6 +34,7 @@ Feel free to utilize any HTML and CSS elements to make the result more appealing
 
 response = get_completion(prompt)
 
+#If you want the name of the resulting file to be different than change it here, keep it in .html format
 outputer = open("response-gpt.html", "w")
 
 outputer.write(response)
